@@ -6,9 +6,9 @@ var entries = [
   {slug:"TIL 03/04/2016", body: "Dogs love the taste of limes, even though they find them quite sour", created_at: "03/04/2016"}
 ];
 
-/* GET entris listing. */
+/* GET entries listing. */
 router.get('/', function(req, res, next) {
-  res.render('entries/index', { title: 'TIL', entries: entries });
+  res.render('entries/index', {title: 'TIL', entries: entries });
 });
 
 /* /entries/new */
@@ -43,16 +43,20 @@ router.post('/update/:id', function(req, res, next) {
   });
 });
 
-/* GET entris listing. */
+/* GET entries listing. */
 router.get('/', function(req, res, next) {
-  res.render('entries/index_delete', { title: 'TIL', entries: entries });
+  res.render('entries/index_delete/', { title: 'TIL', entries: entries });
 });
 
 
 
 /* /entries/0 */
 router.get('/:id', function(req, res, next) {
-  res.render('entries/entry', {title: "A TIL Entry", entry: entries[req.params.id]});
+  res.render('entries/entry', {
+    title: "A TIL Entry",
+    id: req.params.id,
+    entry: entries[req.params.id]
+  });
 });
 
 
